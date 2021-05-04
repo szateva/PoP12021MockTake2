@@ -1,6 +1,11 @@
 # 13021326
 
-"""  """
+"""
+ 1) tuples are immutable, hence the operation changed[i] = -t[i] will cause an error
+ it can be fixed by converting changed to a list, then adding the changed elements to this list
+ and converting changed to a tuple and returning the tuple.
+ 2) since range(1, len(t)) starts at 1 the first element in the tuple will never be checked.
+ To fix change to range(0, len(t)) """
 
 """ Consider the function replace that, for a tuple t of numbers, returns a tuple of the
 same size as t, where every negative number n is changed to the positive number -n
@@ -23,10 +28,14 @@ changed).
 Recommended answer length up to 70 words plus any code. """
 
 def replace(t):
-    changed = t
-    for i in range(1, len(t)):
+    changed = list(t)
+    for i in range(0, len(t)):
         if t[i]<0:
             changed[i] = -t[i]
         else:
             changed[i] = t[i]
-    return changed
+    result = tuple(changed)
+    return result
+
+t = (-2, -3, 1, -7)
+print(replace(t))
