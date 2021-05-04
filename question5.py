@@ -20,15 +20,13 @@ assert X == [[],[], []] #must be True """
 def trim_matrix(M):
     # finding the shortest row:
     shortest = len(M[0])
-    print(shortest)
     for row in range(len(M)):
         if len(M[row]) < shortest:
             shortest = len(M[row])
-            print(shortest)
 
     for row in range(len(M)):
         if len(M[row]) > shortest:
-            del M[shortest:]
+            del M[row][shortest:]
     return M
 
 # Indicative test cases:
